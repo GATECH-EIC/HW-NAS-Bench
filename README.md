@@ -114,6 +114,49 @@ TinyNetwork(
 ...
 ```
 
+## Example of measuring hardware-cost 
+
+When measuring the hardware-cost, a template is shared among different devices to collect the hardware-cost, as shown below. Different devices will use their own collect() function. 
+
+```python
+def collect(arch_idx, dataset):
+    ...
+
+device_name = "DEVICE"
+import numpy as np
+for dataset in DATASET_LIST: # repeat on the targe dataset
+    metric_list = []
+    for arch_idx in ARCH_IDX_LIST: # repeat on the architectures in the space
+        metric = collect(arch_idx, dataset)
+        metric_list.appencd(metric)
+    assert len(metric_list) == len(ARCH_IDX_LIST)
+    # save to npy
+    metric_npy = np.array(metric_list)
+    np.save("measurements_logs/{}/{}.npy".format(device_name, dataset), metric_npy)
+```
+
+For example, when measuring the latency and energy in the EdgeGPU, we replace the collect() with the following function, and os.system() is used to do each experiments on a specific architecture on a specific dataset sperately to avoid the remaining process in the system that brings extra errors. And the [EdgeGPU_Benchmark.py](dev/proj_edgegpu/EdgeGPU_Benchmark.py) is contained in the [project folder](dev/proj_edgegpu/).
+
+```python
+import os
+import pickle
+def collect(arch_idx, dataset):
+    # CMD to run for measure one architecture @ one dataset
+    CMD_to_run = "python3 EdgeGPU_Benchmark.py \
+                  --arch_idx {} \
+                  --log_label assigned_tasks \
+                  --num_repeats_item 50 \
+                  --dataset {}".format(arch_idx, dataset)
+    os.system(CMD_to_run)
+    path = os.path.join("measurements_logs", "{}_arch_idx_{}_num_repeats_{}_label_{}.pkl".format(dataset, arch_idx, 50, assigned_tasks))
+
+    with open(path, 'rb') as f:
+        res = pickle.load(f)
+    return [res["energy"], res["latency"]]
+```
+
+A complete project folder is [here](dev/proj_edgegpu/).
+
 ## Misc
 
 Part of the devices used in HW-NAS-Bench:
