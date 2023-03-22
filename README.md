@@ -165,3 +165,19 @@ Part of the devices used in HW-NAS-Bench:
 
 ## Acknowledgment
 > + The code is inspired by [NAS-Bench-201](https://github.com/D-X-Y/NAS-Bench-201/tree/6275241dd8cc25d39fa9618e4b9fa3ac2eda6d10).
+
+## Citation
+```
+@inproceedings{
+li2021hwnasbench,
+title={{\{}HW{\}}-{\{}NAS{\}}-Bench: Hardware-Aware Neural Architecture Search Benchmark},
+author={Chaojian Li and Zhongzhi Yu and Yonggan Fu and Yongan Zhang and Yang Zhao and Haoran You and Qixuan Yu and Yue Wang and Cong Hao and Yingyan Lin},
+booktitle={International Conference on Learning Representations},
+year={2021},
+url={https://openreview.net/forum?id=_0kaDkv3dVf}
+}
+```
+## License
+Copyright (c) 2022 GaTech-EIC. All rights reserved.
+
+Licensed under the [MIT](https://github.com/GATECH-EIC/HW-NAS-Bench/blob/master/LICENSE) license.
