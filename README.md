@@ -171,7 +171,7 @@ Part of the devices used in HW-NAS-Bench:
 @inproceedings{
 li2021hwnasbench,
 title={{\{}HW{\}}-{\{}NAS{\}}-Bench: Hardware-Aware Neural Architecture Search Benchmark},
-author={Chaojian Li and Zhongzhi Yu and Yonggan Fu and Yongan Zhang and Yang Zhao and Haoran You and Qixuan Yu and Yue Wang and Cong Hao and Yingyan Lin},
+author={Chaojian Li and Zhongzhi Yu and Yonggan Fu and Yongan Zhang and Yang Zhao and Haoran You and Qixuan Yu and Yue Wang and Yingyan Lin},
 booktitle={International Conference on Learning Representations},
 year={2021},
 url={https://openreview.net/forum?id=_0kaDkv3dVf}
